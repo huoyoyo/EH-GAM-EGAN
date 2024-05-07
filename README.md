@@ -1,5 +1,5 @@
 #  EH-GAM-EGAN
-This repository for our paper: Graph-Enhanced Anomaly Detection Framework in Multivariate Time Series using Graph Attention and Enhanced Generative Adversarial Networks
+This repository for our paper: Graph-Enhanced Anomaly Detection Framework in Multivariate Time Series using Graph Attention and Enhanced Generative Adversarial Networks 
 
 ## Requirements
 python==3.7.16
