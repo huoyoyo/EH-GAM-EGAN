@@ -8,7 +8,7 @@ torch==1.7.0
 
 torch-geometric==2.1.0
 
-## Dataset
+## Datasets
 The public datasets SMAP (Soil Moisture Active Passive satellite) and MSL (Mars Science Laboratory rover) are available from NASA and can be accessed [here](https://github.com/khundman/telemanom)
 
 The Server Machine Dataset (SMD) has been released and can be accessed [here](https://github.com/NetManAIOps/OmniAnomaly/tree/master/ServerMachineDataset).
