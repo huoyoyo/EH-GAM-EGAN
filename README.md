@@ -3,9 +3,7 @@ This repository for our paper: Graph-Enhanced Anomaly Detection Framework in Mul
 
 ## Requirements
 python==3.7.16
-
 torch==1.7.0
-
 torch-geometric==2.1.0
 
 ## Dataset
