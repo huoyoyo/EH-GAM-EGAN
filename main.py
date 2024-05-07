@@ -8,9 +8,6 @@ from utils.utils import *
 from solver import Solver
 
 
-# from solver_woGP import Solver
-
-
 def str2bool(v):
     return v.lower() in 'true'
 
