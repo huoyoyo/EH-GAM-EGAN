@@ -2,15 +2,12 @@ import torch
 import torch.nn as nn
 import numpy as np
 import os
-
 from model.EHGAMEGAN import Generator, Discriminator, LSTM_AD, GDN
 from data_factory.data_loader import get_loader_segment
 from utils.utils import *
 from utils.optimizer import *
 from utils.net_struct import *
-
 from tqdm import tqdm
-
 from src.eval_methods import bf_search
 from pprint import pprint
 
