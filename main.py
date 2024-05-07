@@ -1,10 +1,8 @@
 import os
 import argparse
 from turtle import clear
-
 from torch.backends import cudnn
 from utils.utils import *
-
 from solver import Solver
 
 
