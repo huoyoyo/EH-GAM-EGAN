@@ -33,7 +33,7 @@ class ConvLayer(nn.Module):
         return x.permute(0, 2, 1)  # Permute back
 
 
-class Generator(nn.Module):  # 对每个时间点的真假作出判断
+class Generator(nn.Module): 
     def __init__(self, win_size, latent_dim, input_c, dropout=0.2):
         super(Generator, self).__init__()
         self.win_size = win_size
@@ -64,7 +64,7 @@ class Generator(nn.Module):  # 对每个时间点的真假作出判断
         return validity  # (b,1,n).view(validity.shape[0],*(self.win_size, self.n_feats)) #(b,w)
 
 
-class Discriminator(nn.Module):  # 对每个时间点的真假作出判断
+class Discriminator(nn.Module):  
     def __init__(self, win_size, input_c, dropout=0.2):
         super(Discriminator, self).__init__()
         self.win_size = win_size
@@ -105,7 +105,6 @@ class LSTM_AD(nn.Module):
         self.fcn = nn.Sequential(nn.Linear(self.n_feats, self.n_feats), nn.Sigmoid())
 
     def forward(self, x):
-        # 生成一个形状为 (1, 1, self.n_hidden) 的张量，其中的元素是从均匀分布 [0, 1) 中随机采样得到的浮点数。
         hidden = (torch.rand(1, 1, self.n_hidden, dtype=torch.float32).to(device),
                   torch.randn(1, 1, self.n_hidden, dtype=torch.float32).to(device))
         hidden2 = (torch.rand(1, 1, self.n_feats, dtype=torch.float32).to(device),
@@ -121,10 +120,7 @@ class LSTM_AD(nn.Module):
         return v  # torch.stack(outputs)
 
 
-## GDN_AD Model
 
-
-# 该函数用于生成用于批处理的边索引
 def get_batch_edge_index(org_edge_index, batch_num, node_num):
     # org_edge_index:(2, edge_num)
     edge_index = org_edge_index.clone().detach()
