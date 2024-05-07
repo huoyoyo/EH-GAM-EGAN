@@ -17,8 +17,8 @@ from pprint import pprint
 
 class EarlyStopping:
     def __init__(self, model_save_path, patience=3, verbose=False, dataset_name='', delta=0):
-        self.patience = patience  # 连续多少个 epoch 没有改进时触发早停的耐心值
-        self.verbose = verbose  # 控制是否打印早停过程中的额外信息
+        self.patience = patience 
+        self.verbose = verbose  
         self.counter = 0
         self.best_score = None
         self.early_stop = False
@@ -27,7 +27,7 @@ class EarlyStopping:
         self.dataset = dataset_name
         self.model_save_path = model_save_path
 
-    # 对象的调用方法，用于判断是否触发早停。
+    
     def __call__(self, val_loss, model_G, model_D, Predictor, Predictor_S, epoch):
         score = -val_loss
         if self.best_score is None:
@@ -81,7 +81,6 @@ class Solver(object):
         self.device = torch.device(device)
         self.criterion = nn.MSELoss(reduction='none')
 
-        # 定义全连接边索引
         fc_edge_index = generate_fc_edge_index(self.input_c)
         fc_edge_index = torch.tensor(fc_edge_index, dtype=torch.long)
         edge_index_sets = [fc_edge_index]
@@ -231,7 +230,6 @@ class Solver(object):
         predictor.to(device)
         predictor_S.to(device)
 
-        # 将模型设置为评估模式
         generator.eval()
         discriminator.eval()
         predictor.eval()
@@ -252,7 +250,6 @@ class Solver(object):
             input_data = input_data.float().to(self.device)  # (b,win_size,n)
             y_input_data = y_input_data.float().to(self.device)  # (b,1,n)
 
-            # 创建一个形状与y_input_data相同的张量z，其中每个元素都是从均值为0、标准差为1的正态分布中随机采样得到。
             z = torch.FloatTensor(
                 np.random.normal(0, 1, (y_input_data.shape[0], y_input_data.shape[1], y_input_data.shape[2]))
             ).to(device)  # (b,1,n)
@@ -290,7 +287,6 @@ class Solver(object):
             d_energy.append(d_loss.detach().cpu().numpy())
             g_energy.append(g_loss.detach().cpu().numpy())
 
-        # np.concatenate()是用来对数列或矩阵进行合并
         print('bb', np.concatenate(test_energy, axis=0).shape)
 
         test_energy = np.concatenate(test_energy, axis=0).reshape(-1)
